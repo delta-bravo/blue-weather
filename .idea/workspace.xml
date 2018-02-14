@@ -2,50 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ac3db3c-2cc2-404c-9d56-7019da92832d" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/blue-weather.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/blue-weather" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/index.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/currantlabs/ble.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/currantlabs/ble/darwin.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/currantlabs/ble/examples/lib/dev.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/go-ble/ble.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/go-ble/ble/darwin.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/go-ble/ble/examples/lib/dev.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/mattn/go-colorable.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/mattn/go-isatty.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/mgutz/ansi.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/mgutz/logxi/v1.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/pkg/errors.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/prometheus/client_golang/prometheus.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/prometheus/client_golang/prometheus/promhttp.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/prometheus/client_model/go.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/prometheus/common/expfmt.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/prometheus/common/internal/bitbucket.org/ww/goautoneg.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/prometheus/common/model.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/prometheus/procfs.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/prometheus/procfs/internal/util.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/prometheus/procfs/nfs.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/prometheus/procfs/xfs.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/github.com/raff/goble/xpc.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/darwin_amd64/golang.org/x/net/context.a" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/refresh.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/weather.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/github.com/go-ble/ble" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/github.com/mattn/go-colorable" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/github.com/mattn/go-isatty" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/github.com/mgutz/ansi" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/github.com/mgutz/logxi" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/github.com/pkg/errors" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/github.com/prometheus/client_golang" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/github.com/prometheus/client_model" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/github.com/prometheus/common" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/github.com/prometheus/procfs" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/github.com/raff/goble" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/golang.org/x/net" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/style.css" />
+      <change beforePath="$PROJECT_DIR$/src/blue-weather" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -68,14 +25,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="weather.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="weather.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/weather.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1462">
+            <state relative-caret-position="15">
               <caret line="102" column="24" lean-forward="false" selection-start-line="102" selection-start-column="24" selection-end-line="102" selection-end-column="24" />
               <folding>
                 <element signature="e#14#342#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -91,7 +58,7 @@
         </entry>
       </file>
       <file leaf-file-name="profile.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/github.com/go-ble/ble/profile.go">
+        <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/profile.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="510">
               <caret line="34" column="18" lean-forward="false" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
@@ -124,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/refresh.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -141,9 +108,9 @@
         </entry>
       </file>
       <file leaf-file-name="gauge.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/github.com/prometheus/client_golang/prometheus/gauge.go">
+        <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/prometheus/client_golang/prometheus/gauge.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="531">
+            <state relative-caret-position="735">
               <caret line="55" column="17" lean-forward="false" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
               <folding />
             </state>
@@ -151,7 +118,7 @@
         </entry>
       </file>
       <file leaf-file-name="metric.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/github.com/prometheus/client_golang/prometheus/metric.go">
+        <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/prometheus/client_golang/prometheus/metric.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="855">
               <caret line="61" column="5" lean-forward="false" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
@@ -220,6 +187,7 @@
         <option value="$PROJECT_DIR$/refresh.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/weather.go" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -251,8 +219,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -260,10 +226,22 @@
               <item name="blue-weather" type="b2602c69:ProjectViewProjectNode" />
               <item name="blue-weather" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="blue-weather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blue-weather" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blue-weather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blue-weather" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -279,12 +257,13 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -318,14 +297,14 @@
   <component name="ToolWindowManager">
     <frame x="5" y="23" width="1275" height="726" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3349554" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34063262" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5028386" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32927817" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0625" sideWeight="0.4971614" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47697368" sideWeight="0.4971614" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6299342" sideWeight="0.4971614" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25493422" sideWeight="0.4971614" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39967105" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -376,16 +355,16 @@
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/src/github.com/go-ble/ble/handler.go</url>
+          <url>file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/handler.go</url>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/src/github.com/go-ble/ble/darwin/client.go</url>
+          <url>file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/darwin/client.go</url>
           <line>178</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/src/github.com/go-ble/ble/darwin/device.go</url>
+          <url>file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/darwin/device.go</url>
           <line>512</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
@@ -419,7 +398,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/paypal/gatt/examples/service/gap.go" />
     <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/paypal/gatt/examples/service/gatt.go" />
     <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/paypal/gatt/examples/service/battery.go" />
     <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/paypal/gatt/xpc/xpc_wrapper_darwin.h" />
@@ -447,21 +425,21 @@
     <entry file="file://$PROJECT_DIR$/src/github.com/currantlabs/ble/examples/lib/dev/dev.go" />
     <entry file="file://$PROJECT_DIR$/src/github.com/currantlabs/ble/examples/lib/dev/default_darwin.go" />
     <entry file="file://$PROJECT_DIR$/src/github.com/currantlabs/ble/darwin/device.go" />
-    <entry file="file://$PROJECT_DIR$/src/github.com/go-ble/ble/device.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/device.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="43" column="4" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/go-ble/ble/adv.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/adv.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="15" lean-forward="false" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/go-ble/ble/darwin/adv.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/darwin/adv.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="7" column="5" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
@@ -475,7 +453,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/go-ble/ble/uuid.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/uuid.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
@@ -484,7 +462,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/github.com/currantlabs/ble/examples/basic/advertiser/main.go" />
     <entry file="file://$PROJECT_DIR$/src/github.com/currantlabs/ble/examples/basic/explorer/main.go" />
-    <entry file="file://$PROJECT_DIR$/src/github.com/go-ble/ble/handler.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/handler.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="9" column="5" lean-forward="false" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
@@ -492,7 +470,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/go-ble/ble/darwin/device.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/darwin/device.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7455">
           <caret line="510" column="20" lean-forward="false" selection-start-line="510" selection-start-column="20" selection-end-line="510" selection-end-column="20" />
@@ -500,14 +478,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/go-ble/ble/darwin/conn.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/darwin/conn.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/go-ble/ble/darwin/client.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/darwin/client.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4725">
           <caret line="320" column="5" lean-forward="false" selection-start-line="320" selection-start-column="5" selection-end-line="320" selection-end-column="5" />
@@ -515,14 +493,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/go-ble/ble/client.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/client.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
           <caret line="55" column="52" lean-forward="false" selection-start-line="55" selection-start-column="52" selection-end-line="55" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/go-ble/ble/gatt.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/gatt.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2205">
           <caret line="154" column="27" lean-forward="false" selection-start-line="154" selection-start-column="24" selection-end-line="154" selection-end-column="27" />
@@ -537,7 +515,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/go-ble/ble/examples/basic/explorer/main.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/examples/basic/explorer/main.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -545,7 +523,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/prometheus/client_golang/prometheus/promhttp/http.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/prometheus/client_golang/prometheus/promhttp/http.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
           <caret line="76" column="5" lean-forward="false" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
@@ -553,7 +531,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/prometheus/client_golang/prometheus/metric.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/prometheus/client_golang/prometheus/metric.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
           <caret line="61" column="5" lean-forward="false" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
@@ -579,14 +557,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/go-ble/ble/addr_test.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/addr_test.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/go-ble/ble/profile.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/go-ble/ble/profile.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="34" column="18" lean-forward="false" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
@@ -602,9 +580,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/prometheus/client_golang/prometheus/gauge.go">
+    <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/vendor/github.com/prometheus/client_golang/prometheus/gauge.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
+        <state relative-caret-position="735">
           <caret line="55" column="17" lean-forward="false" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
           <folding />
         </state>
@@ -614,14 +592,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15084" column="17" lean-forward="false" selection-start-line="15084" selection-start-column="17" selection-end-line="15084" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/refresh.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -636,11 +613,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/github.com/delta-bravo/blue-weather/weather.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1462">
+        <state relative-caret-position="15">
           <caret line="102" column="24" lean-forward="false" selection-start-line="102" selection-start-column="24" selection-end-line="102" selection-end-column="24" />
           <folding>
             <element signature="e#14#342#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
