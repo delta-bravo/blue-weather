@@ -54,7 +54,10 @@ func addHttpHandlers() {
 	http.HandleFunc("/temperature", refreshHandler)
 	http.HandleFunc("/style.css", cssHandler)
 	http.HandleFunc("/refresh.js", jsHandler)
-	http.ListenAndServe(":8015", nil)
+	err := http.ListenAndServe(":8015", nil)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func cssHandler(w http.ResponseWriter, r *http.Request) {
