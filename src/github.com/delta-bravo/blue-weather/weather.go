@@ -52,20 +52,19 @@ func addHttpHandlers() {
 	http.Handle("/metrics", promhttp.Handler())
 	http.HandleFunc("/", rootHandler)
 	http.HandleFunc("/temperature", refreshHandler)
-	http.HandleFunc("/style.css", cssHandler)
-	http.HandleFunc("/refresh.js", jsHandler)
+	http.HandleFunc("/style.css", createFileHandler("style.css"))
+	http.HandleFunc("/refresh.js", createFileHandler("refresh.js"))
 	err := http.ListenAndServe(":8015", nil)
 	if err != nil {
+		log.Fatal("Unable to open port for listening")
 		panic(err)
 	}
 }
 
-func cssHandler(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "style.css")
-}
-
-func jsHandler(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "refresh.js")
+func createFileHandler(fileName string) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, fileName)
+	}
 }
 
 func refreshHandler(w http.ResponseWriter, r *http.Request) {
