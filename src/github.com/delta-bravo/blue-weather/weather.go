@@ -5,9 +5,7 @@ import (
 	"html/template"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/go-ble/ble"
 	"golang.org/x/net/context"
-	"time"
 	"fmt"
 	"log"
 	"github.com/pkg/errors"
@@ -15,8 +13,6 @@ import (
 	"encoding/binary"
 	"github.com/delta-bravo/blue-weather/bleservices"
 )
-
-var ctx = ble.WithSigHandler(context.WithTimeout(context.Background(), time.Second*120))
 
 var htmlTemplate *template.Template
 
