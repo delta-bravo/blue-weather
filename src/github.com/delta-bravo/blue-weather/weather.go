@@ -72,10 +72,6 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	htmlTemplate.Execute(w, map[string]interface{}{"temperature": ambientTemperature})
 }
 
-func filter(a ble.Advertisement) bool {
-	return strings.Contains(a.LocalName(), "micro:bit");
-}
-
 func chkErr(err error) {
 	switch errors.Cause(err) {
 	case nil:
