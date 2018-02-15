@@ -11,7 +11,6 @@ import (
 	"fmt"
 	"log"
 	"github.com/pkg/errors"
-	"strings"
 	"math"
 	"encoding/binary"
 	"github.com/delta-bravo/blue-weather/bleservices"
