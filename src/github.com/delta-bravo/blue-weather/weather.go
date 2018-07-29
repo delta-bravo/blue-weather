@@ -5,12 +5,8 @@ import (
 	"html/template"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/prometheus/client_golang/prometheus"
-	"golang.org/x/net/context"
 	"fmt"
 	"log"
-	"github.com/pkg/errors"
-	"math"
-	"encoding/binary"
 	"github.com/delta-bravo/blue-weather/bleservices"
 )
 
@@ -24,9 +20,13 @@ var temperatureGauge = prometheus.NewGauge(prometheus.GaugeOpts{
 var ambientTemperature = 0.0
 
 var temperatureHandler = func(data []byte) {
-	log.Printf("Current temperature %d\n", data)
-	ambientTemperature = math.Float64frombits(binary.LittleEndian.Uint64(data))
+	oldReading := ambientTemperature
+	ambientTemperature = float64(data[0])
 	temperatureGauge.Set(ambientTemperature)
+	if oldReading != ambientTemperature {
+		log.Printf("Got new temperature reading: %f", ambientTemperature)
+	}
+
 }
 
 func main() {
@@ -35,7 +35,10 @@ func main() {
 		panic(err)
 	}
 	htmlTemplate = t
-	go bleservices.StartReadingMicrobitTemperature(temperatureHandler)
+	bluetoothClient := bleservices.GetClient()
+
+	go bleservices.StartBluetoothServices(bluetoothClient, temperatureHandler)
+
 	prometheus.Register(temperatureGauge)
 	addHttpHandlers()
 }
@@ -65,16 +68,4 @@ func refreshHandler(w http.ResponseWriter, r *http.Request) {
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
 	htmlTemplate.Execute(w, map[string]interface{}{"temperature": ambientTemperature})
-}
-
-func chkErr(err error) {
-	switch errors.Cause(err) {
-	case nil:
-	case context.DeadlineExceeded:
-		fmt.Printf("done\n")
-	case context.Canceled:
-		fmt.Printf("canceled\n")
-	default:
-		log.Fatalf(err.Error())
-	}
 }
