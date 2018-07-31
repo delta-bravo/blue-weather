@@ -5,6 +5,7 @@ import "github.com/go-ble/ble"
 type TestBleClient struct {
 	discoverProfileParams DiscoverProfileParams
 	subscribeParams       SubscribeParams
+	err error
 }
 
 func (TestBleClient) Addr() ble.Addr {
@@ -24,7 +25,7 @@ func (client *TestBleClient) DiscoverProfile(force bool) (*ble.Profile, error) {
 		called:    true,
 		withForce: force,
 	}
-	return nil, nil
+	return nil, client.err
 }
 
 func (TestBleClient) DiscoverServices(filter []ble.UUID) ([]*ble.Service, error) {
@@ -78,7 +79,7 @@ func (client *TestBleClient) Subscribe(c *ble.Characteristic, ind bool, h ble.No
 		handler:        h,
 	}
 	client.subscribeParams = subscribeParams
-	return nil
+	return client.err
 }
 
 func (TestBleClient) Unsubscribe(c *ble.Characteristic, ind bool) error {

@@ -4,6 +4,7 @@ import (
 	"testing"
 	"github.com/go-ble/ble"
 	"github.com/delta-bravo/blue-weather/bleservices"
+	"github.com/pkg/errors"
 )
 
 const _temperatureServiceUuid = "E95D6100251D470AA062FA1922DFA9A8"
@@ -71,10 +72,10 @@ func (client *TestBluetoothClient) Subscribe(characteristic *ble.Characteristic,
 }
 
 func (client *TestBluetoothClient) Initialize() error {
-	return nil
+	return client.err
 }
 
-func TestStartBluetoothServices(t *testing.T) {
+func TestStartBluetoothServicesShouldCallRequiredMethods(t *testing.T) {
 	//given
 	testBluetoothClient := &TestBluetoothClient{}
 	testBluetoothClient.setupGoodProfile()
@@ -108,7 +109,7 @@ func TestStartBluetoothServices(t *testing.T) {
 	}
 }
 
-func TestDiscoverProfile(t *testing.T) {
+func TestDiscoverProfileShouldCallClientWithCorrectParams(t *testing.T) {
 	//given
 	mockBleClient := TestBleClient{
 	}
@@ -129,7 +130,7 @@ func TestDiscoverProfile(t *testing.T) {
 	}
 }
 
-func TestSubscribe(t *testing.T) {
+func TestSubscribeShouldCallClientWithRequiredParams(t *testing.T) {
 	//given
 	mockBleClient := TestBleClient{
 	}
@@ -156,5 +157,42 @@ func TestSubscribe(t *testing.T) {
 
 	if mockBleClient.subscribeParams.ind {
 		t.Error("Expected BLE Client's ind to be false")
+	}
+}
+
+func TestDiscoverProfileErrorShouldReturnError(t *testing.T) {
+	mockBleClient := TestBleClient{
+		err: errors.New("Much error"),
+	}
+	bleClientUnderTest := bleservices.BluetoothClientImpl{
+		BleClient: &mockBleClient,
+	}
+	_, e := bleClientUnderTest.DiscoverProfile()
+
+	if e == nil || e.Error() != "Much error" {
+		t.Error("Expected error was not returned")
+	}
+}
+
+func TestSubscribeErrorShouldReturnError(t *testing.T) {
+	mockBleClient := TestBleClient{
+		err: errors.New("Much error"),
+	}
+	bleClientUnderTest := bleservices.BluetoothClientImpl{
+		BleClient: &mockBleClient,
+	}
+	serviceUuid, e := ble.Parse(_temperatureServiceUuid)
+	characteristicUuid, e := ble.Parse(_temperatureCharacteristicUuid)
+	if e != nil {
+		panic("Failed to parse expected UUIDs")
+	}
+
+	service := ble.NewService(serviceUuid)
+	characteristic := service.NewCharacteristic(characteristicUuid)
+
+	e = bleClientUnderTest.Subscribe(characteristic, false, nil)
+
+	if e == nil || e.Error() != "Much error" {
+		t.Error("Expected error was not returned")
 	}
 }

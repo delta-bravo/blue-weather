@@ -7,8 +7,6 @@ import (
 	"time"
 	"golang.org/x/net/context"
 	"strings"
-	"github.com/pkg/errors"
-	"fmt"
 )
 
 const temperatureServiceUuid = "E95D6100251D470AA062FA1922DFA9A8"
@@ -51,7 +49,6 @@ func (client BluetoothClientImpl) Subscribe(characteristic *ble.Characteristic, 
 	return client.BleClient.Subscribe(characteristic, ind, h)
 }
 
-
 func GetClient() BluetoothClient {
 	bluetoothClient := &BluetoothClientImpl{}
 	err := bluetoothClient.Initialize()
@@ -72,30 +69,25 @@ func StartBluetoothServices(bluetoothClient BluetoothClient, notificationHandler
 	profile, err := bluetoothClient.DiscoverProfile()
 	temperatureServiceUuid, err := ble.Parse(temperatureServiceUuid)
 	temperatureCharacteristicUuid, err := ble.Parse(temperatureCharacteristicUuid)
-	if err!=nil {
+	if err != nil {
 		return err
 	}
 	for _, service := range profile.Services {
 		if service.UUID.Equal(temperatureServiceUuid) {
 			log.Println("Temperature service discovered service, yay")
-			for _, characteristic := range service.Characteristics {
-				if characteristic.UUID.Equal(temperatureCharacteristicUuid) {
-					return bluetoothClient.Subscribe(characteristic, false, notificationHandler)
-				}
-			}
+			return subscribeForCharacteristicWithService(service.Characteristics, temperatureCharacteristicUuid,
+				bluetoothClient, notificationHandler)
 		}
 	}
 	return nil
 }
 
-func chkErr(err error) {
-	switch errors.Cause(err) {
-	case nil:
-	case context.DeadlineExceeded:
-		fmt.Printf("done\n")
-	case context.Canceled:
-		fmt.Printf("canceled\n")
-	default:
-		log.Fatalf(err.Error())
+func subscribeForCharacteristicWithService(characteristics []*ble.Characteristic, uuid ble.UUID,
+	client BluetoothClient, handler ble.NotificationHandler) error {
+	for _, characteristic := range characteristics {
+		if characteristic.UUID.Equal(uuid) {
+			return client.Subscribe(characteristic, false, handler)
+		}
 	}
+	return nil
 }
