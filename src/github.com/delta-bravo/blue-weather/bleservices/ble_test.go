@@ -1,9 +1,8 @@
-package bleservices_test
+package bleservices
 
 import (
 	"testing"
 	"github.com/go-ble/ble"
-	"github.com/delta-bravo/blue-weather/bleservices"
 	"github.com/pkg/errors"
 )
 
@@ -75,14 +74,14 @@ func (client *TestBluetoothClient) Initialize() error {
 	return client.err
 }
 
-func TestStartBluetoothServicesShouldCallRequiredMethods(t *testing.T) {
+func Test_StartBluetoothServicesShouldCallRequiredMethods(t *testing.T) {
 	//given
 	testBluetoothClient := &TestBluetoothClient{}
 	testBluetoothClient.setupGoodProfile()
 	testBluetoothClient.createTestHandler()
 
 	//when
-	bleservices.StartBluetoothServices(testBluetoothClient, testBluetoothClient.testHandler)
+	StartBluetoothServices(testBluetoothClient, testBluetoothClient.testHandler)
 
 	//then
 	if !testBluetoothClient.profileDiscovered {
@@ -109,11 +108,11 @@ func TestStartBluetoothServicesShouldCallRequiredMethods(t *testing.T) {
 	}
 }
 
-func TestDiscoverProfileShouldCallClientWithCorrectParams(t *testing.T) {
+func Test_DiscoverProfileShouldCallClientWithCorrectParams(t *testing.T) {
 	//given
 	mockBleClient := TestBleClient{
 	}
-	bleClientUnderTest := bleservices.BluetoothClientImpl{
+	bleClientUnderTest := BluetoothClientImpl{
 		BleClient: &mockBleClient,
 	}
 
@@ -130,12 +129,12 @@ func TestDiscoverProfileShouldCallClientWithCorrectParams(t *testing.T) {
 	}
 }
 
-func TestSubscribeShouldCallClientWithRequiredParams(t *testing.T) {
+func Test_SubscribeShouldCallClientWithRequiredParams(t *testing.T) {
 	//given
 	mockBleClient := TestBleClient{
 	}
 
-	bleClientWrapperUnderTest := bleservices.BluetoothClientImpl{
+	bleClientWrapperUnderTest := BluetoothClientImpl{
 		BleClient: &mockBleClient,
 	}
 	serviceUuid, e := ble.Parse(_temperatureServiceUuid)
@@ -160,25 +159,30 @@ func TestSubscribeShouldCallClientWithRequiredParams(t *testing.T) {
 	}
 }
 
-func TestDiscoverProfileErrorShouldReturnError(t *testing.T) {
+func Test_DiscoverProfileErrorShouldReturnError(t *testing.T) {
+	//given
 	mockBleClient := TestBleClient{
 		err: errors.New("Much error"),
 	}
-	bleClientUnderTest := bleservices.BluetoothClientImpl{
+
+	//when
+	bleClientUnderTest := BluetoothClientImpl{
 		BleClient: &mockBleClient,
 	}
 	_, e := bleClientUnderTest.DiscoverProfile()
 
+	//thenk
 	if e == nil || e.Error() != "Much error" {
 		t.Error("Expected error was not returned")
 	}
 }
 
-func TestSubscribeErrorShouldReturnError(t *testing.T) {
+func Test_SubscribeErrorShouldReturnError(t *testing.T) {
+	//given
 	mockBleClient := TestBleClient{
 		err: errors.New("Much error"),
 	}
-	bleClientUnderTest := bleservices.BluetoothClientImpl{
+	bleClientUnderTest := BluetoothClientImpl{
 		BleClient: &mockBleClient,
 	}
 	serviceUuid, e := ble.Parse(_temperatureServiceUuid)
@@ -187,11 +191,13 @@ func TestSubscribeErrorShouldReturnError(t *testing.T) {
 		panic("Failed to parse expected UUIDs")
 	}
 
+	//when
 	service := ble.NewService(serviceUuid)
 	characteristic := service.NewCharacteristic(characteristicUuid)
 
 	e = bleClientUnderTest.Subscribe(characteristic, false, nil)
 
+	//then
 	if e == nil || e.Error() != "Much error" {
 		t.Error("Expected error was not returned")
 	}

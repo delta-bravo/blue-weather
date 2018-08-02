@@ -1,4 +1,4 @@
-package bleservices_test
+package bleservices
 
 import "github.com/go-ble/ble"
 
