@@ -26,7 +26,6 @@ var temperatureHandler = func(data []byte) {
 	if oldReading != ambientTemperature {
 		log.Printf("Got new temperature reading: %f", ambientTemperature)
 	}
-
 }
 
 func main() {
