@@ -1,6 +1,6 @@
 package handlers
 
-import "github.com/delta-bravo/blue-weather/prometheus"
+import "github.com/delta-bravo/blue-weather/prometheusclient"
 
 type BluetoothHandlers interface {
 	CreateTemperatureHandler() func(data []byte)
@@ -9,7 +9,7 @@ type BluetoothHandlers interface {
 
 type GaugeHandlers struct {
 	temperatureGauge float64
-	prometheusClient prometheus.Client
+	prometheusClient prometheusclient.Client
 }
 
 func (handlers *GaugeHandlers) CreateTemperatureHandler() func(data []byte) {
@@ -23,7 +23,7 @@ func (handlers *GaugeHandlers) 	GetCurrentTemperature() float64 {
 	return handlers.temperatureGauge
 }
 
-func CreateBluetoothHandlers(prometheusClient prometheus.Client) BluetoothHandlers {
+func CreateBluetoothHandlers(prometheusClient prometheusclient.Client) BluetoothHandlers {
 	return &GaugeHandlers{
 		prometheusClient:prometheusClient,
 	}

@@ -1,4 +1,4 @@
-package prometheus
+package prometheusclient
 
 import (
 	"testing"
