@@ -20,7 +20,7 @@ func (handlers *GaugeHandlers) CreateTemperatureHandler() func(data []byte) {
 		currentTemperature := float64(data[0])
 		if currentTemperature != handlers.temperatureGauge {
 			log.Println("New temperature reading received", currentTemperature, " degrees C")
-			handlers.temperatureGauge = float64(data[0])
+			handlers.temperatureGauge = currentTemperature
 			handlers.prometheusClient.UpdateTemperatureGaugeValue(handlers.temperatureGauge)
 		}
 	}
