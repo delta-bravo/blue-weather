@@ -4,18 +4,25 @@ import (
 	"testing"
 	"github.com/go-ble/ble"
 	"github.com/pkg/errors"
+	"log"
+	"strings"
 )
 
 const _temperatureServiceUuid = "E95D6100251D470AA062FA1922DFA9A8"
 const _temperatureCharacteristicUuid = "E95D9250251D470AA062FA1922DFA9A8"
 
+const _magnetometerServiceUuid = "E95DF2D8251D470AA062FA1922DFA9A8"
+const _bearingCharacteristicUiid = "E95D9715251D470AA062FA1922DFA9A8"
+
 type TestBluetoothClient struct {
-	profile           ble.Profile
-	err               error
-	profileDiscovered bool
-	testHandlerPassed bool
-	subscribeParams   SubscribeParams
-	testHandler       func(data []byte)
+	profile                      ble.Profile
+	err                          error
+	profileDiscovered            bool
+	testTemperatureHandlerPassed bool
+	testBearingHandlerPassed     bool
+	subscribeParams              map[string]SubscribeParams
+	testTemperatureHandler       func(data []byte)
+	testBearingHandler           func(data []byte)
 }
 
 type SubscribeParams struct {
@@ -29,21 +36,37 @@ type DiscoverProfileParams struct {
 	withForce bool
 }
 
-func (client *TestBluetoothClient) createTestHandler() {
-	client.testHandler = func(data []byte) {
-		client.testHandlerPassed = true
+func (client *TestBluetoothClient) createTestHandlers() {
+	client.testTemperatureHandler = func(data []byte) {
+		client.testTemperatureHandlerPassed = true
+	}
+
+	client.testBearingHandler = func(data []byte) {
+		client.testBearingHandlerPassed = true
 	}
 }
 
 func (client *TestBluetoothClient) setupGoodProfile() {
-	serviceUuid, e := ble.Parse(_temperatureServiceUuid)
-	characteristicUuid, e := ble.Parse(_temperatureCharacteristicUuid)
+	client.subscribeParams = make(map[string]SubscribeParams)
+	temperatureServiceUuid, e := ble.Parse(_temperatureServiceUuid)
+	temperatureCharacteristicUuid, e := ble.Parse(_temperatureCharacteristicUuid)
+
+	magnetometerServiceUuid, e := ble.Parse(_magnetometerServiceUuid)
+	bearingCharacteristicUiid, e := ble.Parse(_bearingCharacteristicUiid)
+
 	if e != nil {
 		panic("Failed to parse expected UUIDs")
 	}
-	service := ble.NewService(serviceUuid)
-	service.Characteristics = []*ble.Characteristic{service.NewCharacteristic(characteristicUuid)}
-	services := []*ble.Service{service}
+	temperatureService := ble.NewService(temperatureServiceUuid)
+	temperatureService.Characteristics = []*ble.Characteristic{
+		temperatureService.NewCharacteristic(temperatureCharacteristicUuid),
+	}
+	magnetometerService := ble.NewService(magnetometerServiceUuid)
+	magnetometerService.Characteristics = []*ble.Characteristic{
+		temperatureService.NewCharacteristic(bearingCharacteristicUiid),
+	}
+
+	services := []*ble.Service{temperatureService, magnetometerService}
 
 	client.profile = ble.Profile{
 		Services: services,
@@ -61,12 +84,19 @@ func (client *TestBluetoothClient) DiscoverProfile() (*ble.Profile, error) {
 }
 
 func (client *TestBluetoothClient) Subscribe(characteristic *ble.Characteristic, ind bool, h ble.NotificationHandler) error {
-	client.subscribeParams = SubscribeParams{
+	params := SubscribeParams{
 		characteristic: *characteristic,
 		ind:            ind,
 		handler:        h,
 	}
-	client.testHandler([]byte{})
+	actualCharacteristicUuid := strings.ToUpper(characteristic.UUID.String())
+	client.subscribeParams[actualCharacteristicUuid] = params
+
+	if actualCharacteristicUuid == _temperatureCharacteristicUuid {
+		client.testTemperatureHandler([]byte{})
+	} else if actualCharacteristicUuid == _bearingCharacteristicUiid {
+		client.testBearingHandler([]byte{})
+	}
 	return client.err
 }
 
@@ -78,10 +108,13 @@ func Test_StartBluetoothServicesShouldCallRequiredMethods(t *testing.T) {
 	//given
 	testBluetoothClient := &TestBluetoothClient{}
 	testBluetoothClient.setupGoodProfile()
-	testBluetoothClient.createTestHandler()
+	testBluetoothClient.createTestHandlers()
+	notificationHandlers := make(map[string]ble.NotificationHandler)
+	notificationHandlers["temperature"] = testBluetoothClient.testTemperatureHandler
+	notificationHandlers["magnetometer"] = testBluetoothClient.testBearingHandler
 
 	//when
-	StartBluetoothServices(testBluetoothClient, testBluetoothClient.testHandler)
+	StartBluetoothServices(testBluetoothClient, notificationHandlers)
 
 	//then
 	if !testBluetoothClient.profileDiscovered {
@@ -90,20 +123,24 @@ func Test_StartBluetoothServicesShouldCallRequiredMethods(t *testing.T) {
 
 	subscribeParams := testBluetoothClient.subscribeParams
 
+	log.Println("Assert", _temperatureCharacteristicUuid, subscribeParams)
+
 	tempCharacteristicUUID, e := ble.Parse(_temperatureCharacteristicUuid)
 	if e != nil {
 		panic("Failed to parse expected UUID")
 	}
 
-	if !subscribeParams.characteristic.UUID.Equal(tempCharacteristicUUID) {
-		t.Errorf("Expected uuid %s but got %s", tempCharacteristicUUID, subscribeParams.characteristic.UUID.String())
+	temperatureParams := subscribeParams[_temperatureCharacteristicUuid]
+
+	if !temperatureParams.characteristic.UUID.Equal(tempCharacteristicUUID) {
+		t.Errorf("Expected uuid %s but got %s", tempCharacteristicUUID, temperatureParams.characteristic.UUID.String())
 	}
 
-	if subscribeParams.ind {
+	if temperatureParams.ind {
 		t.Error("Expected notification subscription (ind = false) but got (ind = true)")
 	}
 
-	if !testBluetoothClient.testHandlerPassed {
+	if !testBluetoothClient.testTemperatureHandlerPassed {
 		t.Error("Didn't pass expected ble handler")
 	}
 }

@@ -41,8 +41,13 @@ func (server *httpServer) addHandlers() {
 	}
 
 	http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
-		htmlTemplate.Execute(writer, map[string]interface{}{"temperature": server.bluetoothHandlers.GetCurrentTemperature()})
+		htmlTemplate.Execute(writer,
+			map[string]interface{}{
+			"temperature": server.bluetoothHandlers.GetCurrentTemperature(),
+			"bearing": server.bluetoothHandlers.GetCurrentBearing(),
+		})
 	})
+
 	http.HandleFunc("/temperature", server.refreshHandler)
 	http.HandleFunc("/style.css", createFileHandler("style.css"))
 	http.HandleFunc("/refresh.js", createFileHandler("refresh.js"))

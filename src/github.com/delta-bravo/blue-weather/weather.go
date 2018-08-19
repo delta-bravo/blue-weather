@@ -6,6 +6,7 @@ import (
 	"github.com/delta-bravo/blue-weather/prometheusclient"
 	"github.com/delta-bravo/blue-weather/handlers"
 	"log"
+	"github.com/go-ble/ble"
 )
 
 func main() {
@@ -15,7 +16,12 @@ func main() {
 	bluetoothHandlers:= handlers.CreateBluetoothHandlers(prometheusClient)
 
 	go func() {
-		err := bleservices.StartBluetoothServices(bluetoothClient, bluetoothHandlers.CreateTemperatureHandler())
+		handlersMap := map[string]ble.NotificationHandler{
+			"temperature": bluetoothHandlers.CreateTemperatureHandler(),
+			"magnetometer": bluetoothHandlers.CreateBearingHandler(),
+		}
+
+		err := bleservices.StartBluetoothServices(bluetoothClient, handlersMap)
 		if err!=nil {
 			panic(err)
 		}

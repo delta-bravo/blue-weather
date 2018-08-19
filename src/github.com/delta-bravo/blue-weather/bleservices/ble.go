@@ -12,6 +12,9 @@ import (
 const temperatureServiceUuid = "E95D6100251D470AA062FA1922DFA9A8"
 const temperatureCharacteristicUuid = "E95D9250251D470AA062FA1922DFA9A8"
 
+const magnetometerServiceUuid = "E95DF2D8251D470AA062FA1922DFA9A8"
+const bearingCharacteristicUiid = "E95D9715251D470AA062FA1922DFA9A8"
+
 type BluetoothClient interface {
 	Initialize() error
 	DiscoverProfile() (*ble.Profile, error)
@@ -65,21 +68,33 @@ func filter(a ble.Advertisement) bool {
 	return strings.Contains(a.LocalName(), "micro:bit")
 }
 
-func StartBluetoothServices(bluetoothClient BluetoothClient, notificationHandler ble.NotificationHandler) error {
-	profile, err := bluetoothClient.DiscoverProfile()
-	temperatureServiceUuid, err := ble.Parse(temperatureServiceUuid)
-	temperatureCharacteristicUuid, err := ble.Parse(temperatureCharacteristicUuid)
-	if err != nil {
-		return err
+func StartBluetoothServices(bluetoothClient BluetoothClient, notificationHandlers map[string]ble.NotificationHandler) error {
+
+	var bluetoothError error
+
+	profile, bluetoothError := bluetoothClient.DiscoverProfile()
+	temperatureServiceUuid, bluetoothError := ble.Parse(temperatureServiceUuid)
+	temperatureCharacteristicUuid, bluetoothError := ble.Parse(temperatureCharacteristicUuid)
+
+	magnetometerServiceUuid, bluetoothError := ble.Parse(magnetometerServiceUuid)
+	bearingCharacteristicUiid, bluetoothError := ble.Parse(bearingCharacteristicUiid)
+
+	if bluetoothError != nil {
+		return bluetoothError
 	}
+
 	for _, service := range profile.Services {
 		if service.UUID.Equal(temperatureServiceUuid) {
 			log.Println("Temperature service discovered service, yay")
-			return subscribeForCharacteristicWithService(service.Characteristics, temperatureCharacteristicUuid,
-				bluetoothClient, notificationHandler)
+			bluetoothError = subscribeForCharacteristicWithService(service.Characteristics, temperatureCharacteristicUuid,
+				bluetoothClient, notificationHandlers["temperature"])
+		} else if service.UUID.Equal(magnetometerServiceUuid) {
+			log.Println("Magnetometer service discovered service, yay")
+			bluetoothError = subscribeForCharacteristicWithService(service.Characteristics, bearingCharacteristicUiid,
+				bluetoothClient, notificationHandlers["magnetometer"])
 		}
 	}
-	return nil
+	return bluetoothError
 }
 
 func subscribeForCharacteristicWithService(characteristics []*ble.Characteristic, uuid ble.UUID,

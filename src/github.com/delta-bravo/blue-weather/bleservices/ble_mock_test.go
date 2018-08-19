@@ -8,6 +8,10 @@ type TestBleClient struct {
 	err error
 }
 
+func (client TestBleClient) Conn() ble.Conn {
+	panic("implement me")
+}
+
 func (TestBleClient) Addr() ble.Addr {
 	panic("implement me")
 }
